@@ -1,0 +1,35 @@
+version: '3'
+services:
+  node:
+    image: node:16.14
+    container_name: todo_list_api
+    # same as `docker run -it`
+    tty: true
+    stdin_open: true
+    command: bash
+    restart: always
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    depends_on:
+      - database
+    ports:
+      - 3001:3001
+    environment:
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_HOST=database
+      - PORT=${API_PORT}
+
+  database:
+    image: ${DB_DOCKER_IMAGE}
+    container_name: todo_list_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=todolistdb
+    ports:
+      - ${MYSQL_PORT}:${MYSQL_PORT}
+    volumes:
+      - ./mysql_data:/var/lib/mysql:rw
+      - ./db/:/docker-entrypoint-initdb.d
