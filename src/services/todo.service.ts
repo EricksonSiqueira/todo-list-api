@@ -1,18 +1,18 @@
 import { create } from 'domain';
 import { todoValidations } from './validations/todo.validation';
-import { Todo } from '../types/todo';
+import { AddTodo, Todo } from '../types/todo';
 import { todoModel } from '../models';
 import StatusCode from '../types/statusCode';
 
 export const todoService = {
-  async create({ title, description, done }: Omit<Todo, 'id'>) {
-    const error = todoValidations.newTodo({ title, description, done });
+  async create({ title, description }: AddTodo) {
+    const error = todoValidations.newTodo({ title, description });
 
     if (error) {
       return { status: error.status, error: error.message };
     }
 
-    const newTodoId = await todoModel.create({ title, description, done });
+    const newTodoId = await todoModel.create({ title, description });
 
     return { status: StatusCode.CREATED, data: { id: newTodoId } };
   },

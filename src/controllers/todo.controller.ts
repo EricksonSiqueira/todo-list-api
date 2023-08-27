@@ -5,6 +5,8 @@ export const todoController = {
   async create(req: Request, res: Response) {
     const { body } = req;
 
+    console.log('passou aqui');
+
     const todo = await todoService.create(body);
 
     if (todo.error) {

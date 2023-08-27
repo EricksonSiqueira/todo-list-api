@@ -4,3 +4,8 @@ export interface Todo {
   description: string;
   done: number;
 }
+
+export interface AddTodo {
+  title: string;
+  description: string;
+}

@@ -1,13 +1,13 @@
 import { camelizeKeys } from 'humps';
-import { Todo } from '../types/todo';
+import { AddTodo, Todo } from '../types/todo';
 import connection from './connection';
 import { getFormattedUpdateColumns } from '../utils/getFormattedUpdateColumns';
 
 export const todoModel = {
-  async create({ title, description, done }: Omit<Todo, 'id'>) {
+  async create({ title, description }: AddTodo) {
     const [result] = await connection.execute(
-      'INSERT INTO todos (title, description, done) VALUES (?, ?, ?)',
-      [title, description, done]
+      'INSERT INTO todos (title, description) VALUES (?, ?)',
+      [title, description]
     );
 
     const { insertId } = result as { insertId: Todo['id'] };
