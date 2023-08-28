@@ -5,4 +5,12 @@ const addTodoSchema = Joi.object({
   description: Joi.string().required(),
 });
 
-export { addTodoSchema };
+const editTodoSchema = Joi.object({
+  title: Joi.string().optional(),
+  description: Joi.string().optional(),
+  done: Joi.number().valid(0, 1).optional(),
+});
+
+const validIdSchema = Joi.object({});
+
+export { addTodoSchema, editTodoSchema };
