@@ -27,4 +27,15 @@ export const todoMiddleware = {
 
     next();
   },
+  async validateId(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+
+    if (+id <= 0) {
+      return res
+        .status(StatusCode.BAD_REQUEST)
+        .json({ error: 'Id must be a positive number' });
+    }
+
+    next();
+  },
 };
