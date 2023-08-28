@@ -30,6 +30,12 @@ export const todoService = {
   },
 
   async update(id: Todo['id'], newTodoData: Omit<Todo, 'id'>) {
+    const error = todoValidations.editTodo(newTodoData);
+
+    if (error) {
+      return { status: error.status, error: error.message };
+    }
+
     const todoExists = await todoModel.exists(id);
 
     if (!todoExists) {
