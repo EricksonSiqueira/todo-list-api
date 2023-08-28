@@ -25,6 +25,10 @@ export const todoController = {
 
     const todo = await todoService.findById(+id);
 
+    if (todo.error) {
+      return res.status(todo.status).json({ error: { message: todo.error } });
+    }
+
     res.status(todo.status).json(todo.data);
   },
 

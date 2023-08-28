@@ -26,6 +26,10 @@ export const todoService = {
   async findById(id: Todo['id']) {
     const todo = await todoModel.findById(id);
 
+    if (!todo) {
+      return { status: StatusCode.NOT_FOUND, error: 'Todo not found' };
+    }
+
     return { status: StatusCode.OK, data: todo };
   },
 
