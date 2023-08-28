@@ -43,17 +43,13 @@ export const todoModel = {
   },
 
   async update(id: Todo['id'], newTodoData: EditTodo) {
-    const [result] = await connection.execute(
+    await connection.execute(
       `UPDATE todos SET ${getFormattedUpdateColumns(newTodoData)} WHERE id = ?`,
       [...Object.values(newTodoData), id]
     );
-
-    return result;
   },
 
   async delete(id: Todo['id']) {
     await connection.execute('DELETE FROM todos WHERE id = ?', [id]);
-
-    return { deleted: true };
   },
 };
