@@ -6,8 +6,8 @@ const todoRoute = Router();
 
 todoRoute.post('/', todoMiddleware.validateNewTodo, todoController.create);
 todoRoute.get('/', todoController.findAll);
-todoRoute.get('/:id', todoController.findById);
-todoRoute.put('/:id', todoController.update);
-todoRoute.delete('/:id', todoController.delete);
+todoRoute.get('/:id', todoMiddleware.validateId, todoController.findById);
+todoRoute.put('/:id', todoMiddleware.validateId, todoController.update);
+todoRoute.delete('/:id', todoMiddleware.validateId, todoController.delete);
 
 export { todoRoute };
