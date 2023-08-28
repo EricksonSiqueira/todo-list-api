@@ -1,6 +1,5 @@
-import { create } from 'domain';
 import { todoValidations } from './validations/todo.validation';
-import { AddTodo, Todo } from '../types/todo';
+import { AddTodo, EditTodo, Todo } from '../types/todo';
 import { todoModel } from '../models';
 import StatusCode from '../types/statusCode';
 
@@ -33,7 +32,7 @@ export const todoService = {
     return { status: StatusCode.OK, data: todo };
   },
 
-  async update(id: Todo['id'], newTodoData: Omit<Todo, 'id'>) {
+  async update(id: Todo['id'], newTodoData: EditTodo) {
     const error = todoValidations.editTodo(newTodoData);
 
     if (error) {

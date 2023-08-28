@@ -1,4 +1,4 @@
-import { AddTodo, Todo } from '../../types/todo';
+import { AddTodo, EditTodo, Todo } from '../../types/todo';
 import StatusCode from '../../types/statusCode';
 import { addTodoSchema, editTodoSchema } from './schemas/todo.schema';
 
@@ -10,7 +10,7 @@ export const todoValidations = {
       return { status: StatusCode.BAD_REQUEST, message: error.message };
     }
   },
-  editTodo({ title, description, done }: Omit<Todo, 'id'>) {
+  editTodo({ title, description, done }: EditTodo) {
     const { error } = editTodoSchema.validate({ title, description, done });
 
     if (error) {

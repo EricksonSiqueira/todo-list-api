@@ -1,5 +1,5 @@
 import { camelizeKeys } from 'humps';
-import { AddTodo, Todo } from '../types/todo';
+import { AddTodo, EditTodo, Todo } from '../types/todo';
 import connection from './connection';
 import { getFormattedUpdateColumns } from '../utils/getFormattedUpdateColumns';
 
@@ -42,7 +42,7 @@ export const todoModel = {
     return !!count;
   },
 
-  async update(id: Todo['id'], newTodoData: Omit<Todo, 'id'>) {
+  async update(id: Todo['id'], newTodoData: EditTodo) {
     const [result] = await connection.execute(
       `UPDATE todos SET ${getFormattedUpdateColumns(newTodoData)} WHERE id = ?`,
       [...Object.values(newTodoData), id]
