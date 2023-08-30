@@ -7,6 +7,12 @@ export const todoMock = {
   done: 0,
 } as Todo;
 
+export const todoMockWithNoId = {
+  title: 'title',
+  description: 'description',
+  done: 0,
+};
+
 export const createTodoMock = {
   title: 'title',
   description: 'description',
