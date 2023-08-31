@@ -13,7 +13,7 @@ describe('src/models/todo.service.ts', () => {
   });
 
   describe('create', () => {
-    it('when todoModel.create resolves a valid id should return objetct with status CREATED and data.id equals to model returned id', async function () {
+    it('when todoModel.create resolves a valid id should return object with status CREATED and data.id equals to model returned id', async function () {
       const createResponse = todoMock.id;
 
       sinon.stub(todoModel, 'create').resolves(createResponse);
@@ -91,7 +91,7 @@ describe('src/models/todo.service.ts', () => {
   });
 
   describe('findById', () => {
-    it('when todoModel.findById resolves a todo should return objetct with status OK and data equals to todo received by the model', async function () {
+    it('when todoModel.findById resolves a todo should return object with status OK and data equals to todo received by the model', async function () {
       const finByIdResponse = todoMock;
 
       sinon.stub(todoModel, 'findById').resolves(finByIdResponse);
@@ -105,7 +105,7 @@ describe('src/models/todo.service.ts', () => {
       });
     });
 
-    it('when todoModel.findById resolves a invalid value should return objetct with status 404 and error with value "Todo not found"', async function () {
+    it('when todoModel.findById resolves a invalid value should return object with status 404 and error with value "Todo not found"', async function () {
       sinon.stub(todoModel, 'findById').resolves(undefined);
 
       const todoFound = await todoService.findById(-1);
@@ -126,6 +126,7 @@ describe('src/models/todo.service.ts', () => {
 
   describe('update', () => {
     it('when todoModel.update resolves should return object with status 204 and message with value "Todo updated"', async function () {
+      sinon.stub(todoModel, 'exists').resolves(true);
       sinon.stub(todoModel, 'update').resolves();
 
       const updatedTodo = await todoService.update(1, todoMockWithNoId);
@@ -207,6 +208,7 @@ describe('src/models/todo.service.ts', () => {
 
   describe('delete', () => {
     it('when todoModel.delete resolves should return object with status 204', async function () {
+      sinon.stub(todoModel, 'exists').resolves(true);
       sinon.stub(todoModel, 'delete').resolves();
 
       const updatedTodo = await todoService.delete(1);
