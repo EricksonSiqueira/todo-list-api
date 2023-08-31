@@ -125,7 +125,7 @@ describe('src/models/todo.service.ts', () => {
   });
 
   describe('update', () => {
-    it('when todoModel.update resolves should return object with status 204 and message with value "Todo updated"', async function () {
+    it('when todoModel.update resolves should return object with status 204', async function () {
       sinon.stub(todoModel, 'exists').resolves(true);
       sinon.stub(todoModel, 'update').resolves();
 
@@ -134,7 +134,6 @@ describe('src/models/todo.service.ts', () => {
       expect(updatedTodo).to.be.an('object');
       expect(updatedTodo).to.be.deep.equal({
         status: 204,
-        message: 'Todo updated',
       });
     });
 
