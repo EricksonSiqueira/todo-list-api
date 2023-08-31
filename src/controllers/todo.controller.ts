@@ -44,9 +44,7 @@ export const todoController = {
         .json({ error: { message: updatedTodo.error } });
     }
 
-    return res
-      .status(updatedTodo.status)
-      .json({ message: updatedTodo.message });
+    return res.status(updatedTodo.status).json();
   },
 
   async delete(req: Request, res: Response) {

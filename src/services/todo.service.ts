@@ -47,7 +47,7 @@ export const todoService = {
 
     await todoModel.update(id, newTodoData);
 
-    return { status: StatusCode.NO_CONTENT, message: 'Todo updated' };
+    return { status: StatusCode.NO_CONTENT };
   },
 
   async delete(id: Todo['id']) {
