@@ -1,4 +1,4 @@
-import { Todo, AddTodo, EditTodo } from '../../../src/types/todo';
+import { Todo, AddTodo } from '../../../src/types/todo';
 
 export const todoMock = {
   id: 1,
