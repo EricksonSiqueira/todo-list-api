@@ -16,6 +16,7 @@ todoRoute.put(
   '/:id',
   todoMiddleware.validateId,
   todoMiddleware.validateBody,
+  todoMiddleware.validateTodoUpdate,
   todoController.update
 );
 todoRoute.delete('/:id', todoMiddleware.validateId, todoController.delete);
