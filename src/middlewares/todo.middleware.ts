@@ -48,4 +48,23 @@ export const todoMiddleware = {
 
     next();
   },
+
+  async validateTodoUpdate(req: Request, res: Response, next: NextFunction) {
+    const { body } = req;
+    const valideKeys = ['title', 'description', 'done'];
+    const receivedKeys = Object.keys(body);
+    let invalidKey = false;
+
+    receivedKeys.forEach((key) => {
+      if (!valideKeys.includes(key)) {
+        invalidKey = true;
+        return;
+      }
+    });
+
+    if (invalidKey) {
+      return res.status(400).json({ error: { message: 'Invalid body' } });
+    }
+    next();
+  },
 };
