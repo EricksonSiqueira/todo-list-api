@@ -22,7 +22,7 @@ export const todoMiddleware = {
     if (leftOverFieldsText) {
       return res
         .status(StatusCode.BAD_REQUEST)
-        .json({ error: leftOverFieldsText });
+        .json({ error: { message: leftOverFieldsText } });
     }
 
     next();
@@ -33,7 +33,17 @@ export const todoMiddleware = {
     if (+id <= 0) {
       return res
         .status(StatusCode.BAD_REQUEST)
-        .json({ error: 'Id must be a positive number' });
+        .json({ error: { message: 'Id must be a positive number' } });
+    }
+
+    next();
+  },
+
+  async validateBody(req: Request, res: Response, next: NextFunction) {
+    const { body } = req;
+
+    if (Object.keys(body).length === 0) {
+      return res.status(400).json({ error: { message: 'Invalid body' } });
     }
 
     next();
