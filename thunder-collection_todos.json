@@ -1,0 +1,89 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "todos",
+    "dateExported": "2023-09-03T21:51:06.048Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "2e1167e4-f2da-4d97-addc-ca9581cb90fb",
+            "colId": "23afa9fd-f9bd-4550-9e88-d9a29f6d597e",
+            "containerId": "",
+            "name": "TODOS GET ALL",
+            "url": "http://localhost:3001/todos",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-08-27T00:46:49.003Z",
+            "modified": "2023-08-27T00:47:20.678Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "85c8f8fd-d8ca-4303-9b28-8e863d7c0fc8",
+            "colId": "23afa9fd-f9bd-4550-9e88-d9a29f6d597e",
+            "containerId": "",
+            "name": "TODOS GET BY ID",
+            "url": "http://localhost:3001/todos/2",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-27T00:55:05.360Z",
+            "modified": "2023-09-03T21:35:23.826Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "75370e5c-0f77-4277-84d1-1dc9faa2df22",
+            "colId": "23afa9fd-f9bd-4550-9e88-d9a29f6d597e",
+            "containerId": "",
+            "name": "TODOS EDIT",
+            "url": "http://localhost:3001/todos/2",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-08-27T16:37:51.239Z",
+            "modified": "2023-09-02T07:18:44.645Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"nada\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9a4d8908-316f-4bd3-887c-af102db24db5",
+            "colId": "23afa9fd-f9bd-4550-9e88-d9a29f6d597e",
+            "containerId": "",
+            "name": "TODOS CREATE",
+            "url": "http://localhost:3001/todos",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-08-27T16:42:24.741Z",
+            "modified": "2023-08-27T18:33:35.450Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"new title 3\",\n  \"description\": \"new description 3\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c33c19ac-fd4b-49f8-bbc4-6db311e9ffd6",
+            "colId": "23afa9fd-f9bd-4550-9e88-d9a29f6d597e",
+            "containerId": "",
+            "name": "TODOS DELETE",
+            "url": "http://localhost:3001/todos/4",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-08-27T17:26:45.801Z",
+            "modified": "2023-08-28T16:58:05.769Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
