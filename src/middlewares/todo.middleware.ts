@@ -14,7 +14,7 @@ export const todoMiddleware = {
     if (missingFieldsText) {
       return res
         .status(StatusCode.BAD_REQUEST)
-        .json({ error: missingFieldsText });
+        .json({ error: { message: missingFieldsText } });
     }
 
     const leftOverFieldsText = tooManyFieldsTextRespose(body, requiredFields);
