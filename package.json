@@ -6,11 +6,10 @@
   "scripts": {
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "node src/server.ts",
+    "start": "node dist/src/server.js",
     "debug": "nodemon --ignore coverage src/server.ts",
     "test": "mocha ./tests/**/*.spec.ts",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx",
-    "test:coverage": "tsc && nyc mocha"
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx"
   },
   "keywords": [],
   "author": "",
