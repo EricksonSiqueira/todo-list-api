@@ -44,20 +44,37 @@ describe('src/models/todo.service.ts', () => {
       });
     });
 
-    it('when todoService.create receives a empty string as description should return joi error', async function () {
+    it('when todoService.create receives a invalid value as description should return joi error', async function () {
       const createResponse = todoMock.id;
 
       sinon.stub(todoModel, 'create').resolves(createResponse);
 
       const createdTodo = await todoService.create({
         ...todoMockWithNoId,
-        description: '',
+        description: 1 as unknown as string,
       });
 
       expect(createdTodo).to.be.an('object');
       expect(createdTodo).to.be.deep.equal({
         status: 400,
-        error: '"description" is not allowed to be empty',
+        error: '"description" must be a string',
+      });
+    });
+
+    it('when todoService.create receives a invalid value as title should return joi error', async function () {
+      const createResponse = todoMock.id;
+
+      sinon.stub(todoModel, 'create').resolves(createResponse);
+
+      const createdTodo = await todoService.create({
+        ...todoMockWithNoId,
+        title: 1 as unknown as string,
+      });
+
+      expect(createdTodo).to.be.an('object');
+      expect(createdTodo).to.be.deep.equal({
+        status: 400,
+        error: '"title" must be a string',
       });
     });
 
