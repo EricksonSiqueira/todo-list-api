@@ -7,9 +7,9 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node dist/src/server.js",
-    "debug": "nodemon --ignore coverage src/server.ts",
     "test": "mocha ./tests/**/*.spec.ts",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx"
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx",
+    "dev": "tsx watch src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -29,10 +29,9 @@
     "chai-http": "^4.4.0",
     "eslint-config-trybe-backend": "^2.1.0",
     "mocha": "^10.2.0",
-    "nodemon": "^2.0.22",
     "sinon": "^15.2.0",
     "sinon-chai": "^3.7.0",
-    "ts-node": "^10.9.1",
+    "tsx": "^3.12.8",
     "typescript": "^5.2.2"
   },
   "dependencies": {
