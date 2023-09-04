@@ -20,7 +20,7 @@ Before you begin, make sure you have the following tools and technologies instal
    cd todo-list-api
    ```
 
-1. setup environment variables:
+1. Setup environment variables:
 
    ```bash
    touch .env
