@@ -55,7 +55,7 @@ Before you begin, make sure you have the following tools and technologies instal
    `dev mode`
 
    ```bash
-   npm run debug
+   npm run dev
    ```
 
    `build`
